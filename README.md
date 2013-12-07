@@ -1,7 +1,7 @@
 # camunda Modeler Standalone
 
 A standalone version of the [camunda Modeler](https://github.com/camunda/camunda-modeler). 
-Use for seamless modeling of process and collaboration diagrams.
+Use for seamless modeling of [BPMN](https://en.wikipedia.org/wiki/BPMN) process and collaboration diagrams.
 Built with simplicity and modeling only in mind.
 
 ![Standalone Modeler](https://raw.github.com/Nikku/camunda-modeler-standalone/master/documentation/images/screenshot.png)
