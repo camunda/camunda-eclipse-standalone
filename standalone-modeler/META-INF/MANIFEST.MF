@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: camunda Modeler Standalone
+Bundle-SymbolicName: org.camunda.bpm.modeler.standalone
+Bundle-Version: 1.0.0.qualifier
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.platform,
+ org.eclipse.ui,
+ org.eclipse.ui.ide.application,
+ org.camunda.bpm.modeler
