@@ -6,6 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.platform,
  org.eclipse.core.runtime,
  org.eclipse.core.runtime.compatibility,
+ org.eclipse.core.resources,
  org.eclipse.equinox.app,
  org.eclipse.equinox.launcher,
  org.eclipse.ui,
@@ -13,5 +14,7 @@ Require-Bundle: org.eclipse.platform,
  org.eclipse.ui.ide.application,
  org.eclipse.ui.navigator.resources,
  org.eclipse.ui.workbench,
- org.camunda.bpm.modeler
+ org.camunda.bpm.modeler,
+ org.eclipse.swt
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Plugin-Class: org.camunda.bpm.modeler.standalone.Activator

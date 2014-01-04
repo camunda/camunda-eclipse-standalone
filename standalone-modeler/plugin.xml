@@ -6,7 +6,8 @@
          id="camundaModeler"
          point="org.eclipse.core.runtime.products">
       <product
-            application="org.eclipse.ui.ide.workbench"
+            application="org.camunda.bpm.modeler.standalone.application"
+            description="BPMN 2.0 Process Modeling"
             name="Modeler">
          <property
                name="windowImages"
@@ -25,5 +26,17 @@
                value="Modeler">
          </property>
       </product>
+   </extension>
+   <extension
+         id="org.camunda.bpm.modeler.standalone.application"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            icon="images/icons/16_8.png"
+            thread="main"
+            visible="true">
+        <run class="org.camunda.bpm.modeler.standalone.ModelerApplication">
+        </run>
+      </application>
    </extension>
 </plugin>
