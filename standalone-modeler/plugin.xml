@@ -1,35 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
-   <extension
-         id="camundaModeler"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="org.camunda.bpm.modeler.standalone.application"
-            description="BPMN 2.0 Process Modeling"
-            name="Modeler">
-         <property
-               name="windowImages"
-               value="images/icons/16_24.png,images/icons/32_24.png,images/icons/48_24.png">
-         </property>
-         <property
-               name="aboutText"
-               value="(c) camunda Services GmbH and contributors, 2012, 2013.&#x0A;&#x0A;Part of camunda BPM. http://camunda.org">
-         </property>
-         <property
-               name="aboutImage"
-               value="images/about.png">
-         </property>
-         <property
-               name="appName"
-               value="Modeler">
-         </property>
-      </product>
+ <extension
+      id="camundaModeler"
+      point="org.eclipse.core.runtime.products">
+    <product
+          application="org.camunda.bpm.modeler.standalone.application"
+          description="BPMN 2.0 Process Modeling"
+          name="Modeler">
+      <property
+            name="windowImages"
+            value="images/icons/16_24.png,images/icons/32_24.png,images/icons/48_24.png">
+      </property>
+      <property
+            name="aboutText"
+            value="(c) camunda Services GmbH and contributors, 2012, 2013.&#x0A;&#x0A;Part of camunda BPM. http://camunda.org">
+      </property>
+      <property
+            name="aboutImage"
+            value="images/about.png">
+      </property>
+      <property
+            name="appName"
+            value="Modeler">
+      </property>
+    </product>
+  </extension>
+  <!-- new wizard -->
+  <extension point="org.eclipse.ui.newWizards">
+    <category
+      id="camunda.modeler" 
+      name="BPMN"> 
+    </category>
+    <wizard
+        category="camunda.modeler"
+        class="org.camunda.bpm.modeler.standalone.wizards.ExternalBpmn2DiagramWizard"
+        icon="icons/bpmn2_editor_16.png"
+        id="org.camunda.bpm.modeler.standalone.wizards.ExternalBpmn2DiagramWizard"
+        name="BPMN 2.0 File (external)"
+        canFinishEarly="true"
+        hasPages="false">
+      <description>
+          Creates a new BPMN 2.0 file on the local file system
+       </description>
+    </wizard>
+  </extension>
+   <extension point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.ui.resourcePerspective">
+         <newWizardShortcut
+               id="org.camunda.bpm.modeler.standalone.wizards.ExternalBpmn2DiagramWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
    </extension>
-   <extension
-         id="org.camunda.bpm.modeler.standalone.application"
-         point="org.eclipse.core.runtime.applications">
+   
+  <extension
+        id="org.camunda.bpm.modeler.standalone.application"
+        point="org.eclipse.core.runtime.applications">
       <application
             cardinality="singleton-global"
             icon="images/icons/16_8.png"
@@ -38,5 +65,5 @@
         <run class="org.camunda.bpm.modeler.standalone.ModelerApplication">
         </run>
       </application>
-   </extension>
+  </extension>
 </plugin>
