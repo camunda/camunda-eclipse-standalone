@@ -4,7 +4,7 @@
 <product name="Modeler" uid="org.camunda.bpm.modeler.standalone.product" id="org.camunda.bpm.modeler.standalone.camundaModeler" application="org.camunda.bpm.modeler.standalone.application" version="1.0.0" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/camunda Modeler Standalone/images/about.png"/>
+      <image path="/org.camunda.bpm.modeler.standalone/images/about.png"/>
       <text>
          (c) camunda Services GmbH and contributors, 2012, 2013.
 
@@ -24,7 +24,7 @@ openFile
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="/camunda Modeler Standalone/images/icons/16_24.png" i32="/camunda Modeler Standalone/images/icons/32_24.png" i48="/camunda Modeler Standalone/images/icons/48_24.png"/>
+   <windowImages i16="/org.camunda.bpm.modeler.standalone/images/icons/16_24.png" i32="/org.camunda.bpm.modeler.standalone/images/icons/32_24.png" i48="/org.camunda.bpm.modeler.standalone/images/icons/48_24.png"/>
 
    <splash
       location="org.camunda.bpm.modeler.standalone" />
@@ -32,16 +32,15 @@ openFile
       <solaris/>
       <win useIco="false">
          <bmp
-            winSmallHigh="/camunda Modeler Standalone/images/icons/icon_2.bmp"
-            winSmallLow="/camunda Modeler Standalone/images/icons/icon_1.bmp"
-            winMediumHigh="/camunda Modeler Standalone/images/icons/icon_4.bmp"
-            winMediumLow="/camunda Modeler Standalone/images/icons/icon_3.bmp"
-            winLargeHigh="/camunda Modeler Standalone/images/icons/icon_6.bmp"
-            winLargeLow="/camunda Modeler Standalone/images/icons/icon_5.bmp"
-            winExtraLargeHigh="/camunda Modeler Standalone/images/icons/icon_7.bmp"/>
+            winSmallHigh="/org.camunda.bpm.modeler.standalone/images/icons/icon_2.bmp"
+            winSmallLow="/org.camunda.bpm.modeler.standalone/images/icons/icon_1.bmp"
+            winMediumHigh="/org.camunda.bpm.modeler.standalone/images/icons/icon_4.bmp"
+            winMediumLow="/org.camunda.bpm.modeler.standalone/images/icons/icon_3.bmp"
+            winLargeHigh="/org.camunda.bpm.modeler.standalone/images/icons/icon_6.bmp"
+            winLargeLow="/org.camunda.bpm.modeler.standalone/images/icons/icon_5.bmp"
+            winExtraLargeHigh="/org.camunda.bpm.modeler.standalone/images/icons/icon_7.bmp"/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>

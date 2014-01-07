@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>camunda Modeler Standalone</name>
+	<name>org.camunda.bpm.modeler.standalone</name>
 	<comment></comment>
 	<projects>
 	</projects>
