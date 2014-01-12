@@ -1,3 +1,4 @@
+/distro/installer/windows/*-setup.exe
 target/
 bin/
 .settings/
