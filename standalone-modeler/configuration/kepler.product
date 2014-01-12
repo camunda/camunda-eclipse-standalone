@@ -18,9 +18,7 @@ Part of camunda BPM. http://camunda.org
    <launcherArgs>
       <programArgs>--launcher.defaultAction
 openFile
---launcher.appendVmargs
--data
-./workspace</programArgs>
+--launcher.appendVmargs</programArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
@@ -41,6 +39,7 @@ openFile
             winExtraLargeHigh="/org.camunda.bpm.modeler.standalone/images/icons/icon_7.bmp"/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
