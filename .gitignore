@@ -1,3 +1,4 @@
+/standalone-modeler/lib/*.jar
 /distro/installer/windows/*-setup.exe
 target/
 bin/
