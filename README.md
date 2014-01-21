@@ -19,6 +19,7 @@ Built with simplicity and modeling only in mind.
 * [Issues](https://github.com/Nikku/camunda-modeler-standalone/issues)
 * [Roadmap](https://github.com/Nikku/camunda-modeler-standalone/issues?milestone=1&state=open)
 * [Download](https://github.com/Nikku/camunda-modeler-standalone/releases)
+* [How to Contribute](./CONTRIBUTE.md)
 
 
 ## License
