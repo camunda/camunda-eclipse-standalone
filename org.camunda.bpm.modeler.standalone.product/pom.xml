@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>org.camunda.bpm.modeler.standalone.product</artifactId>
+  <packaging>eclipse-repository</packaging>
+  <name>camunda modeler standalone - product</name>
+
+  <properties>
+    <product.id>org.camunda.bpm.modeler.standalone.product</product.id>
+  </properties>
+
+  <parent>
+    <artifactId>org.camunda.bpm.modeler.standalone.parent</artifactId>
+    <groupId>org.camunda.bpm.modeler.standalone</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../org.camunda.bpm.modeler.standalone.parent</relativePath>
+  </parent>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-director-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <executions>
+          <execution>
+            <!-- install the product for all configured os/ws/arch environments using p2 director -->
+            <id>materialize-products</id>
+            <goals>
+              <goal>materialize-products</goal>
+            </goals>
+          </execution>
+          <execution>
+            <!-- (optional) create product zips (one per os/ws/arch) -->
+            <id>archive-products</id>
+            <goals>
+              <goal>archive-products</goal>
+            </goals>
+          </execution>
+        </executions>
+        <!-- (optional) customize the root folder name of the product zip -->
+        <configuration>
+          <products>
+            <product>
+              <id>${product.id}</id>
+              <rootFolder>modeler</rootFolder>
+            </product>
+          </products>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.5</version>
+        <executions>
+          <execution>
+            <id>copy-icons</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>target/products/${product.id}/icons/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>icons</directory>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-images</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>target/products/${product.id}/images/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>images</directory>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

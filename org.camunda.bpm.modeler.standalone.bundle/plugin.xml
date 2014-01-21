@@ -10,7 +10,7 @@
           name="Modeler">
       <property
             name="windowImages"
-            value="images/icons/16_24.png,images/icons/32_24.png,images/icons/48_24.png">
+            value="icons/16_24.png,icons/32_24.png,icons/48_24.png">
       </property>
       <property
             name="aboutText"
@@ -59,7 +59,7 @@
         point="org.eclipse.core.runtime.applications">
       <application
             cardinality="singleton-global"
-            icon="images/icons/16_8.png"
+            icon="icons/16_8.png"
             thread="main"
             visible="true">
         <run class="org.camunda.bpm.modeler.standalone.ModelerApplication">

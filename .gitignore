@@ -1,5 +1,6 @@
-/standalone-modeler/lib/*.jar
+**/lib/*.jar
 /distro/installer/windows/*-setup.exe
 target/
+workspace/
 bin/
 .settings/
