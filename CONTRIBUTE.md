@@ -1,6 +1,6 @@
 # How to Contribute
 
-Write pull requests or file issues and feature suggestions.
+Contributions to the project are welcome in terms of filed issues, feature suggestions as well as pull requests.
 
 
 ## File issues / feature suggestions
@@ -14,9 +14,65 @@ Unless extensions are changed, pull requests should go to the [camunda Modeler](
 Make sure to [add an issue](./issues) in this project, too so that progress on the matter can be tracked.
 
 
-### To work on this project
+# Working on the Project
 
-* Checkout the project
-* [Setup camunda Modeler development environment](https://github.com/camunda/camunda-modeler/blob/master/CONTRIBUTING.md)
-* Import the `standalone-modeler` folder of this project into Eclipse
-* Build distribution via `standalone-modeler/configuration/standalone.product`
+Make sure you have [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html) installed and a running version of [Apache Maven](https://maven.apache.org/) on your path. 
+
+
+## Setup
+
+To get ready for development clone the relevant projects and configure your IDE.
+
+
+### Clone Projects
+
+Create a new `{root}` directory. From within that directory clone this project and the [camunda Modeler](https://github.com/camunda/camunda-modeler) into sub directories.
+
+```
+git clone git@github.com:camunda/camunda-modeler.git modeler
+git clone git@github.com:camunda/camunda-modeler-standalone.git modeler.standalone
+```
+
+The result is a folder structure like the following:
+
+```
+{root}
+  ├───modeler
+  │   ├───org.camunda.bpm.modeler
+  │   └───org.camunda.bpm.modeler.tests
+  └───modeler.standalone
+      ├───org.camunda.bpm.modeler.standalone.bundle
+      ├───org.camunda.bpm.modeler.standalone.parent
+      └───org.camunda.bpm.modeler.standalone.product
+```
+
+
+### Setup Eclipse IDE
+
+Download a fresh copy of [Eclipse Kepler](http://eclipse.org/downloads/) and follow the instructions on [how to install relevant development dependencies](https://github.com/camunda/camunda-modeler/blob/master/CONTRIBUTING.md#kepler).
+
+
+### Grab Project dependencies
+
+Execute `mvn clean verify` once to download project dependencies.
+
+
+### Import Project into the IDE
+
+Import maven projects from `{root}` directory. The required projects are: 
+
+*   `org.camunda.bpm.modeler`
+*   `org.camunda.bpm.modeler.test`
+*   `org.camunda.bpm.modeler.standalone.bundle`
+*   `org.camunda.bpm.modeler.standalone.product`
+
+
+## Build the Distributions
+
+From within the directory `{root}/modeler.standalone` execute:
+
+```
+mvn clean verify
+```
+
+This creates the standalone modeler distributions in the folder `{root}/modeler.standalone/org.camunda.bpm.modeler.standalone.product/target/products`.
