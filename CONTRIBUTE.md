@@ -41,6 +41,7 @@ The result is a folder structure like the following:
   │   ├───org.camunda.bpm.modeler
   │   └───org.camunda.bpm.modeler.tests
   └───modeler.standalone
+      ├───distro
       ├───org.camunda.bpm.modeler.standalone.bundle
       ├───org.camunda.bpm.modeler.standalone.parent
       └───org.camunda.bpm.modeler.standalone.product
@@ -69,10 +70,21 @@ Import maven projects from `{root}` directory. The required projects are:
 
 ## Build the Distributions
 
-From within the directory `{root}/modeler.standalone` execute:
+From within the directory `{root}/modeler.standalone` execute
 
 ```
 mvn clean verify
 ```
 
 This creates the standalone modeler distributions in the folder `{root}/modeler.standalone/org.camunda.bpm.modeler.standalone.product/target/products`.
+
+### Create installers (Windows)
+
+To create installers from the distribution execute
+
+```
+cd {root}\distro\installer\windows
+build-installers.bat
+```
+
+This adds 32 and 64 bit installers for windows to the products directory. Note that [NSIS 3](http://nsis.sourceforge.net/) and a Windows system are required to build the installer.

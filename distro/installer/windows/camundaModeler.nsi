@@ -12,7 +12,8 @@
 ; VER_MAJOR= major version
 ; VER_MINOR= minor version
 ; VER_REVISION= bug fix version
-; BITS= architecture (32/64bit)
+;
+; MODELER_64 for 64bit build
 ;
 
 ;--------------------------------
@@ -67,7 +68,7 @@
 
   ;Name and file
   Name "${PRODUCT_NAME}"
-  OutFile "modeler${BITS}-${VERSION}-setup.exe"
+  OutFile "installer/modeler${BITS}-${VERSION}-setup.exe"
   
   Unicode true
 

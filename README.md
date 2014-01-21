@@ -10,7 +10,7 @@ Built with simplicity and modeling only in mind.
 ## Features
 
 * BPMN 2.0 compliant modeler for process and collaboration diagrams
-* Stripped down [camunda Modeler](https://github.com/camunda/camunda-modeler) **2.3.0** inside
+* Stripped down [camunda Modeler](https://github.com/camunda/camunda-modeler) inside
 * Small footprint (50 MB in size)
 
 
