@@ -20,14 +20,14 @@ Get [NSIS 3](http://nsis.sourceforge.net/) and install it. Expose the install di
 
 Create the modeler artifacts via `mvn clean verify` on the projects root directory (`../../../`).
 
-Execute the `build-installers.bat` in this directory to generate 32/64 bit installers for Windows. This creates and copies the installers to `./installer/` as well as to `../../../org.camunda.bpm.modeler.standalone.product/target/products/`.
+Execute the `build-installers.bat` in this directory to generate 32/64 bit installers for Windows. This creates and copies the installers to `./installer/`.
 
 
 ### Version the Installer
 
-Pass major and minor version as arguments to the installer to generate a specific version.
+Pass a [semver](http://semver.org/) as an arguments to the installer to version it.
 
 ```
-build-installers.bat 1 2
---> writes modeler(32|64)-1.2.0-setup.exe
+build-installers.bat 1.0.0-SNAPSHOT
+--> writes modeler-1.0.0-SNAPSHOT-setup.x86(_64).exe
 ```

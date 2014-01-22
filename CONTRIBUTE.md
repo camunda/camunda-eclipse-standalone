@@ -76,15 +76,9 @@ From within the directory `{root}/modeler.standalone` execute
 mvn clean verify
 ```
 
-This creates the standalone modeler distributions in the folder `{root}/modeler.standalone/org.camunda.bpm.modeler.standalone.product/target/products`.
+Append `-Pwindows-distro` to build the Windows installers. This requires Windows machine, [NSIS 3](http://nsis.sourceforge.net/) and exposed `NSIS_HOME` variable. Read more about [how the installer is built](distro/installer/windows).
 
-### Create installers (Windows)
+Append `-Pix-distro` to build distributions for Linux and Mac OS X.
 
-To create installers from the distribution execute
 
-```
-cd {root}\distro\installer\windows
-build-installers.bat
-```
-
-This adds 32 and 64 bit installers for windows to the products directory. Note that [NSIS 3](http://nsis.sourceforge.net/) and a Windows system are required to build the installer.
+The generated distributions are put into the folder `{root}/modeler.standalone/target/modeler`.

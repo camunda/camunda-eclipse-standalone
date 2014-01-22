@@ -89,4 +89,99 @@
       </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>ix-distro</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+              <execution>
+                <phase>package</phase>
+                <configuration>
+                  <target>
+                    <property name="target.build.base" value="target/modeler/modeler-${project.version}"/>
+                    <property name="target.product.base" value="target/products/org.camunda.bpm.modeler.standalone.product"/>
+                    
+                    <tar compression="gzip" destfile="${target.build.base}-linux.gtk.x86.tar.gz">
+                      <zipfileset dir="../distro/skeleton" prefix="modeler"/>
+                      <zipfileset src="${target.product.base}-linux.gtk.x86.zip"/>
+                    </tar>
+                    <tar compression="gzip" destfile="${target.build.base}-linux.gtk.x86_64.tar.gz">
+                      <zipfileset dir="../distro/skeleton" prefix="modeler"/>
+                      <zipfileset src="${target.product.base}-linux.gtk.x86_64.zip"/>
+                    </tar>
+                    
+                    <tar compression="gzip" destfile="${target.build.base}-macosx.cocoa.x86.tar.gz">
+                      <zipfileset dir="../distro/skeleton" prefix="modeler"/>
+                      <zipfileset src="${target.product.base}-macosx.cocoa.x86.zip"/>
+                    </tar>
+                    <tar compression="gzip" destfile="${target.build.base}-macosx.cocoa.x86_64.tar.gz">
+                      <zipfileset dir="../distro/skeleton" prefix="modeler"/>
+                      <zipfileset src="${target.product.base}-macosx.cocoa.x86_64.zip"/>
+                    </tar>
+                  </target>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+            <dependencies>
+              <dependency>
+                <groupId>ant-contrib</groupId>
+                <artifactId>ant-contrib</artifactId>
+                <version>1.0b3</version>
+                <exclusions>
+                  <exclusion>
+                    <groupId>ant</groupId>
+                    <artifactId>ant</artifactId>
+                  </exclusion>
+                </exclusions>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>windows-distro</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+              <execution>
+                <phase>package</phase>
+                <configuration>
+                  <target>
+                    <property name="installer.dir" value="../distro/installer/windows" />
+                    <exec executable="cmd" dir="${installer.dir}">
+                      <arg value="/c" />
+                      <arg value="build-installers.bat" />
+                      <arg value="${project.version}" />
+                    </exec>
+
+                    <copy todir="target/modeler">
+                      <fileset dir="${installer.dir}/installer">
+                        <exclude name=".gitignore"/>
+                      </fileset>
+                    </copy>
+                  </target>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
