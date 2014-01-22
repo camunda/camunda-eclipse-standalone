@@ -9,58 +9,52 @@
 ; 
 ; SRC_DIR= installable files
 ;
-; VER_MAJOR= major version
-; VER_MINOR= minor version
-; VER_REVISION= bug fix version
+; VERSION= semver string, i.e. 1.0.0(-foo)
 ;
 ; MODELER_64 for 64bit build
 ;
 
 ;--------------------------------
 ; environment variables
-
-!ifdef MODELER_64
-  !define BITS 64
-  !define NAMESUFFIX " (64 bit)"
-!else
-  !define BITS 32
-  !define NAMESUFFIX ""
-!endif
-
-!ifdef VER_MAJOR & VER_MINOR
-  !define /ifndef VER_REVISION 0
-  !define /ifndef VER_BUILD 0
-
-  !define /ifndef VERSION "${VER_MAJOR}.${VER_MINOR}.${VER_REVISION}"
-!endif
-
-!define /ifndef VER_MAJOR 0
-!define /ifndef VER_MINOR 0
-!define /ifndef VERSION 'dev-build'
+  
+  !ifdef MODELER_64
+    !define BITS "x86_64"
+    !define NAMESUFFIX " (64 bit)"
+  !else
+    !define BITS "x86"
+    !define NAMESUFFIX ""
+  !endif
 
 
 ;--------------------------------
 ;Product Configuration
 
-!define PRODUCT_NAME "camunda Modeler${NAMESUFFIX}"
-!define PRODUCT_PUBLISHER "camunda Services GmbH"
-!define PRODUCT_WEB_SITE "https://github.com/Nikku/camunda-modeler-standalone"
-!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
-!define PRODUCT_INSTALL_NAME "camunda\${PRODUCT_NAME}"
-!define PRODUCT_INSTALL_DIR "${PRODUCT_INSTALL_NAME}"
+  !define PRODUCT_NAME "camunda Modeler${NAMESUFFIX}"
+  !define PRODUCT_PUBLISHER "camunda Services GmbH"
+  !define PRODUCT_WEB_SITE "https://github.com/Nikku/camunda-modeler-standalone"
+  !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
+  !define PRODUCT_INSTALL_NAME "camunda\${PRODUCT_NAME}"
+  !define PRODUCT_INSTALL_DIR "${PRODUCT_INSTALL_NAME}"
 
 
 ;--------------------------------
 ; dependencies
 
   !include "ext\FileAssoc.nsh"
+  !include "StrFunc.nsh"
   !include "MUI2.nsh"
+
+
+;--------------------------------
+; parse version
+
+  !define /ifndef VERSION "0.0.0-dev"
 
 
 ;--------------------------------
 ; basic definitions
 
-!define SHCNF_IDLIST 0
+  !define SHCNF_IDLIST 0
 
 
 ;--------------------------------
@@ -68,7 +62,7 @@
 
   ;Name and file
   Name "${PRODUCT_NAME}"
-  OutFile "installer/modeler${BITS}-${VERSION}-setup.exe"
+  OutFile "installer/modeler-${VERSION}-setup.${BITS}.exe"
   
   Unicode true
 
@@ -88,6 +82,7 @@
 ;Variables
 
   Var StartMenuFolder
+  ${StrTok}
 
 
 ;--------------------------------
@@ -126,6 +121,17 @@
 ;Installer Sections
 
 Section "Modeler" SecModelerMain
+
+  !ifdef VERSION
+    ${StrTok} $0 "${VERSION}" "." "0" "1"
+    !define VER_MAJOR $0
+
+    ${StrTok} $0 "${VERSION}" "." "1" "1"
+    !define VER_MINOR $0
+
+    ${StrTok} $0 "${VERSION}" "." "2" "1"
+    !define VER_BUILD $0
+  !endif
 
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer

@@ -5,8 +5,7 @@ set WIN32_PRODUCTS_DIR=%PRODUCTS_DIR%\org.camunda.bpm.modeler.standalone.product
 set LOCAL_PRODUCTS_DIR=temp
 set LOCAL_INSTALLER_DIR=installer
 
-if NOT "%1"=="" set D_VERSION_MAJOR=/DVER_MAJOR=%1
-if NOT "%2"=="" set D_VERSION_MINOR=/DVER_MINOR=%2
+if NOT "%1"=="" set D_VERSION=/DVERSION=%1
 
 if "%NSIS_HOME%"=="" GOTO :Error_No_NSIS
 
@@ -17,18 +16,15 @@ echo Create local copy of install files...
 robocopy %WIN32_PRODUCTS_DIR% %LOCAL_PRODUCTS_DIR% /MIR >NUL
 
 echo Creating 32bit installer...
-"%NSIS_HOME%\makensis" /DSRC_DIR=%LOCAL_PRODUCTS_DIR%\x86\modeler %D_VERSION_MAJOR% %D_VERSION_MINOR% camundaModeler.nsi 2>&1
+"%NSIS_HOME%\makensis" /DSRC_DIR=%LOCAL_PRODUCTS_DIR%\x86\modeler %D_VERSION% camundaModeler.nsi 2>&1
 if ERRORLEVEL 1 goto Error_Installer_Failed else (echo Done.)
 
 echo.
 
 echo Creating 64bit installer...
-"%NSIS_HOME%\makensis" /DSRC_DIR=%LOCAL_PRODUCTS_DIR%\x86_64\modeler %D_VERSION_MAJOR% %D_VERSION_MINOR% /DMODELER_64 camundaModeler.nsi 2>&1
+"%NSIS_HOME%\makensis" /DSRC_DIR=%LOCAL_PRODUCTS_DIR%\x86_64\modeler %D_VERSION% /DMODELER_64 camundaModeler.nsi 2>&1
 if ERRORLEVEL 1 goto Error_Installer_Failed else (echo Done.)
 
-
-echo Copying generated installers ...
-robocopy %LOCAL_INSTALLER_DIR% %PRODUCTS_DIR% *.exe >NUL
 
 GOTO End
 
