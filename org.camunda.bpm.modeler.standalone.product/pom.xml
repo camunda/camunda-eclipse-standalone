@@ -91,7 +91,7 @@
   </build>
   <profiles>
     <profile>
-      <id>ix-distro</id>
+      <id>linix-distro</id>
       <build>
         <plugins>
           <plugin>

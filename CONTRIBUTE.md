@@ -29,18 +29,18 @@ To get ready for development clone the relevant projects and configure your IDE.
 Create a new `{root}` directory. From within that directory clone this project and the [camunda Modeler](https://github.com/camunda/camunda-modeler) into sub directories.
 
 ```
-git clone git@github.com:camunda/camunda-modeler.git modeler
-git clone git@github.com:camunda/camunda-modeler-standalone.git modeler.standalone
+git clone git@github.com:camunda/camunda-modeler.git camunda-modeler
+git clone git@github.com:camunda/camunda-modeler-standalone.git camunda-modeler-standalone
 ```
 
 The result is a folder structure like the following:
 
 ```
 {root}
-  ├───modeler
+  ├───camunda-modeler
   │   ├───org.camunda.bpm.modeler
   │   └───org.camunda.bpm.modeler.tests
-  └───modeler.standalone
+  └───camunda-modeler-standalone
       ├───distro
       ├───org.camunda.bpm.modeler.standalone.bundle
       ├───org.camunda.bpm.modeler.standalone.parent
@@ -78,7 +78,7 @@ mvn clean verify
 
 Append `-Pwindows-distro` to build the Windows installers. This requires Windows machine, [NSIS 3](http://nsis.sourceforge.net/) and exposed `NSIS_HOME` variable. Read more about [how the installer is built](distro/installer/windows).
 
-Append `-Pix-distro` to build distributions for Linux and Mac OS X.
+Append `-Plinix-distro` to build distributions for Linux and Mac OS X.
 
 
-The generated distributions are put into the folder `{root}/modeler.standalone/target/modeler`.
+The generated distributions are put into the folder `{root}/camunda-modeler-standalone/target/modeler`.
