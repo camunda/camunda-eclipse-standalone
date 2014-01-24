@@ -30,8 +30,8 @@
 ;Product Configuration
 
   !define PRODUCT_NAME "camunda Modeler${NAMESUFFIX}"
-  !define PRODUCT_PUBLISHER "camunda Services GmbH"
-  !define PRODUCT_WEB_SITE "https://github.com/Nikku/camunda-modeler-standalone"
+  !define PRODUCT_PUBLISHER "camunda BPM (camunda.org)"
+  !define PRODUCT_WEB_SITE "https://github.com/camunda/camunda-modeler-standalone"
   !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
   !define PRODUCT_INSTALL_NAME "camunda\${PRODUCT_NAME}"
   !define PRODUCT_INSTALL_DIR "${PRODUCT_INSTALL_NAME}"
@@ -153,8 +153,8 @@ Section "Modeler" SecModelerMain
   WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${VERSION}"
   WriteRegDWORD HKLM "${PRODUCT_UNINST_KEY}" "VersionMajor" "${VER_MAJOR}"
   WriteRegDWORD HKLM "${PRODUCT_UNINST_KEY}" "VersionMinor" "${VER_MINOR}"
-  ; WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
-  ; WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
+  WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
+  WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
   
   ; associate file
   !insertmacro APP_ASSOCIATE "bpmn" "modeler.bpmnFile" "BPMN 2.0 diagram file" \
