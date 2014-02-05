@@ -161,7 +161,7 @@
                 <configuration>
                   <target>
                     <property name="installer.dir" value="../distro/installer/windows" />
-                    <exec executable="cmd" dir="${installer.dir}">
+                    <exec executable="cmd" dir="${installer.dir}" failonerror="true">
                       <arg value="/c" />
                       <arg value="build-installers.bat" />
                       <arg value="${project.version}" />
