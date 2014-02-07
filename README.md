@@ -19,7 +19,8 @@ Built with simplicity and modeling only in mind.
 
 * [Issues](https://github.com/camunda/camunda-modeler-standalone/issues)
 * [Roadmap](https://github.com/camunda/camunda-modeler-standalone/issues?milestone=1&state=open)
-* [Download](https://github.com/camunda/camunda-modeler-standalone/releases)
+* [Website](http://camunda.org/bpmn/tool/)
+* [Download](http://camunda.org/bpmn/tool/download/)
 * [How to Contribute](./CONTRIBUTE.md)
 
 
