@@ -24,3 +24,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Plugin-Class: org.camunda.bpm.modeler.standalone.Activator
 Bundle-ClassPath: lib/commons-io.jar,
  .
+Export-Package: org.camunda.bpm.modeler.standalone

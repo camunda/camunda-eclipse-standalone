@@ -21,6 +21,7 @@
 	<modules>
 		<module>../camunda-modeler</module>
 		<module>org.camunda.bpm.modeler.standalone.bundle</module>
+		<module>org.camunda.bpm.modeler.standalone.tests</module>
 		<module>org.camunda.bpm.modeler.standalone.product</module>
 		<module>org.camunda.bpm.modeler.standalone.parent</module>
 	</modules>

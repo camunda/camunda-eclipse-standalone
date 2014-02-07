@@ -5,9 +5,8 @@ import it.sauronsoftware.junique.JUnique;
 import it.sauronsoftware.junique.MessageHandler;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
@@ -24,6 +23,8 @@ import org.eclipse.ui.internal.ide.application.IDEApplication;
 @SuppressWarnings("restriction")
 public class ModelerApplication extends IDEApplication {
 
+	private static final String WORKSPACE = "workspace";
+	private static final String SEPARATOR = File.separator;
 	private static final String MODELER_APPLICATION_ID = ModelerApplication.class.getName();
 	
 	private static class FocusHandler implements MessageHandler {
@@ -69,60 +70,40 @@ public class ModelerApplication extends IDEApplication {
 
 		Location location = Platform.getInstanceLocation();
 		
-		// try to assign an instance location manually
-		
-		String os = System.getProperty("os.name").toLowerCase();
-		
-		String home = System.getProperty("eclipse.home.location");
-		
-		String path = null;
-		
-		if (os.contains("win")) {
-			// perform custom bootstrap on windows
-			
-			String appData = System.getenv("APPDATA");
-			
-			path = appData + "/" + "camundaModeler";
-		} else {
-			String userHome = System.getProperty("user.home");
-			path = userHome + "/.camundaModeler";
+		if (location.isSet()) {
+			return;
 		}
-
-		File eclipseHome = parseEclipseHome(home);
 		
 		try {
-			File dataDir = new File(path + "/workspace");
-			if (!dataDir.exists()) {
-				
-				FileUtils.forceMkdir(dataDir);
-				
-				File workspaceBlueprint = new File(eclipseHome, "workspace");
-				
-				if (workspaceBlueprint.exists()) {
-					FileUtils.copyDirectory(workspaceBlueprint, dataDir);
-				}
-			}
-
-			if (location.isSet()) {
-				return;
-			}
+			URL platformLocation = initializePlatformLocation("camundaModeler");
 			
-			location.set(dataDir.toURI().toURL(), false);
-		} catch (Exception e) {
+			// we use toURL here because it properly handles whitespaces
+			// (in opposite to toURI())
+			location.set(platformLocation, false);
+		} catch (IOException e) {
 			throw new IllegalStateException("Failed to start Modeler", e);
 		}
 	}
 
-	private File parseEclipseHome(String home) {
+	@SuppressWarnings("deprecation")
+	public static URL initializePlatformLocation(String productName) throws IOException {
 		
-		try {
-			URL url = new URL(home.replaceAll("\\s", "%20"));
-			return new File(url.toURI());
-		} catch (MalformedURLException e) {
-			throw new IllegalStateException(e); 
-		} catch (URISyntaxException e) {
-			throw new IllegalStateException(e); 
+		File dataDirectory = getDataDirectory(productName);
+		File modelerDir = getModelerDirectory();
+		
+		File workspaceDir = new File(dataDirectory, WORKSPACE);
+		if (!workspaceDir.exists()) {
+			
+			FileUtils.forceMkdir(workspaceDir);
+			
+			File workspaceBlueprint = new File(modelerDir, WORKSPACE);
+			
+			if (workspaceBlueprint.exists()) {
+				FileUtils.copyDirectory(workspaceBlueprint, workspaceDir);
+			}
 		}
+		
+		return workspaceDir.toURL();
 	}
 
 	private void focusApp() {
@@ -131,5 +112,45 @@ public class ModelerApplication extends IDEApplication {
 
 	private void lockApp() throws AlreadyLockedException {
 		JUnique.acquireLock(MODELER_APPLICATION_ID, new FocusHandler());
+	}
+	
+
+	public static File getModelerDirectory() {
+		String home = System.getProperty("eclipse.home.location");
+		return toFile(home);
+	}
+
+	public static File getDataDirectory(String name) {
+
+		// try to assign an instance location manually
+		
+		String os = System.getProperty("os.name").toLowerCase();
+		
+		String path = null;
+		
+		if (os.contains("win")) {
+			// perform custom bootstrap on windows
+			
+			String appData = System.getenv("APPDATA");
+			
+			path = appData + SEPARATOR + name;
+		} else {
+			String userHome = System.getProperty("user.home");
+			path = userHome + SEPARATOR + "." + name;
+		}
+		
+		return new File(path);
+	}
+
+	private static File toFile(String fileUri) {
+		
+		try {
+			URL url = new URL(fileUri.replaceAll("\\s", "%20"));
+			return new File(url.toURI());
+		} catch (MalformedURLException e) {
+			throw new IllegalStateException(e); 
+		} catch (URISyntaxException e) {
+			throw new IllegalStateException(e); 
+		}
 	}
 }
