@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: camunda Modeler Standalone
 Bundle-SymbolicName: org.camunda.bpm.modeler.standalone.bundle;singleton:=true
-Bundle-Version: 1.2.0
+Bundle-Version: 2.0.0.qualifier
 Require-Bundle: org.eclipse.platform,
  org.eclipse.core.runtime,
  org.eclipse.core.runtime.compatibility,
