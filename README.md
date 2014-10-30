@@ -24,6 +24,14 @@ Built with simplicity and modeling only in mind.
 * [How to Contribute](./CONTRIBUTE.md)
 
 
+## Troubleshooting
+
+##### The modeler freezes on Linux/GTK
+
+This is due to an [ancient Eclipse bug](https://bugs.eclipse.org/bugs/show_bug.cgi?id=215234).
+Add `-Dorg.eclipse.swt.internal.gtk.disablePrinting` to your `modeler.ini` or `eclipse.ini` after the `-vmargs` line to solve the issue (see [Eclipse SWT FAQ](http://www.eclipse.org/swt/faq.php#printOnGTKHangs)).
+
+
 ## License
 
 [Eclipse Public License](http://www.eclipse.org/legal/epl-v10.html)
