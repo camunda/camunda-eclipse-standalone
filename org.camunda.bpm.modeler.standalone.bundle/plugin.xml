@@ -66,4 +66,29 @@
         </run>
       </application>
   </extension>
+  
+<extension
+ point="org.eclipse.ui.handlers">
+<handler
+    class="org.camunda.bpm.modeler.standalone.SaveAsHandler"
+	commandId="org.eclipse.ui.file.saveAs">
+	<activeWhen>
+    <with
+          variable="activePart">
+       <instanceof
+             value="org.camunda.bpm.modeler.ui.diagram.editor.Bpmn2MultiPageEditor">
+      	</instanceof>
+    </with>
+ 	</activeWhen>
+ 	<enabledWhen>
+    <with
+          variable="activePart">
+       <instanceof
+             value="org.camunda.bpm.modeler.ui.diagram.editor.Bpmn2MultiPageEditor">
+      	</instanceof>
+    </with>
+ 	</enabledWhen>
+</handler>
+</extension>
+  
 </plugin>
