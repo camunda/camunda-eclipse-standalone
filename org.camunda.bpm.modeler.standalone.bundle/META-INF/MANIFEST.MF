@@ -19,7 +19,11 @@ Require-Bundle: org.eclipse.platform,
  org.eclipse.ui.editors,
  org.eclipse.emf.common,
  org.eclipse.bpmn2,
- org.eclipse.core.filesystem
+ org.eclipse.core.filesystem,
+ org.eclipse.e4.core.commands,
+ org.eclipse.e4.core.contexts,
+ org.eclipse.emf.workspace,
+ org.eclipse.graphiti.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Plugin-Class: org.camunda.bpm.modeler.standalone.Activator
 Bundle-ClassPath: lib/commons-io.jar,
