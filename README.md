@@ -1,26 +1,26 @@
-# camunda Modeler Standalone
+> Looking for a modern BPMN 2.0 modeler? Try out the [Camunda Modeler](https://github.com/camunda/camunda-modeler).
 
-A standalone version of the [camunda Modeler](https://github.com/camunda/camunda-modeler). 
+# Camunde Eclipse Standalone
+
+A standalone version of the [Camunda Eclipse Plug-in](https://github.com/camunda/camunda-eclipse-plugin). 
 Use for seamless modeling of [BPMN](https://en.wikipedia.org/wiki/BPMN) process and collaboration diagrams.
 Built with simplicity and modeling only in mind.
 
-![Standalone Modeler](https://raw.github.com/camunda/camunda-modeler-standalone/master/documentation/images/screenshot.png)
+![Standalone Modeler](https://raw.github.com/camunda/camunda-eclipse-standalone/master/documentation/images/screenshot.png)
 
 
 ## Features
 
 * BPMN 2.0 compliant modeler for process and collaboration diagrams
-* Stripped down [camunda Modeler](https://github.com/camunda/camunda-modeler) inside
+* Stripped down [Camunda Eclipse Plug-in](https://github.com/camunda/camunda-eclipse-plugin) inside
 * Small footprint (50 MB in size)
 * Native operating system integration (Windows, via installer)
 
 
 ## Resources
 
-* [Issues](https://github.com/camunda/camunda-modeler-standalone/issues)
-* [Roadmap](https://github.com/camunda/camunda-modeler-standalone/issues?milestone=1&state=open)
-* [Website](http://camunda.org/bpmn/tool/)
-* [Download](http://camunda.org/bpmn/tool/download/)
+* [Issues](https://github.com/camunda/camunda-eclipse-standalone/issues)
+* [Roadmap](https://github.com/camunda/camunda-eclipse-standalone/issues?milestone=1&state=open)
 * [How to Contribute](./CONTRIBUTE.md)
 
 
